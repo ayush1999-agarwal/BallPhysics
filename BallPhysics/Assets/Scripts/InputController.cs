@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     private bool _gameStarted = false;
-    private bool _trailStarted = false;
 
     private BallProjectileController _ball;
 
@@ -24,19 +23,12 @@ public class InputController : MonoBehaviour
             {
                 StartGame(Input.mousePosition);
             }
-            else
-            {
-                _trailStarted = true;
-                _ball.ToggleProjectileTrail(true);
-                RotateTrail(Input.mousePosition);
-            }
         }
-       
     }
 
     public void CallbackMouseDrag(InputAction.CallbackContext context)
     {
-        if (!_gameStarted && _trailStarted)
+        if (!_gameStarted)
         {
             RotateTrail(Input.mousePosition);
         }
