@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0125bd36135fec747a4f484fbbfc7853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startImpulse: 10
+  startImpulse: 25
   startProjectileTrail: {fileID: 1447262830}
 --- !u!1 &519420028
 GameObject:
@@ -1053,7 +1053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1447262831
 Transform:
   m_ObjectHideFlags: 0

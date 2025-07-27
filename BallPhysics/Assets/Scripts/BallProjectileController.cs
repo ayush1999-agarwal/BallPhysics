@@ -18,6 +18,8 @@ public class BallProjectileController : MonoBehaviour
     // Params: Vector2 targetPos: The direction in which the ball is to be thrown
     public void ThrowBall(Vector2 targetPos)
     {
+        _rigidBody.gravityScale = 1;
+        
         ToggleProjectileTrail(false);
         
         Vector2 dir = targetPos - new Vector2(transform.position.x, transform.position.y);
