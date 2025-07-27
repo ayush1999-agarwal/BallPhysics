@@ -6,10 +6,12 @@ public class InputController : MonoBehaviour
     private bool _gameStarted = false;
 
     private BallProjectileController _ball;
+    private BatCreator _batCreator;
 
     private void Start()
     {
         _ball = FindFirstObjectByType<BallProjectileController>();
+        _batCreator = FindFirstObjectByType<BatCreator>();
     }
 
     public void CallbackMouseClicked(InputAction.CallbackContext context)
@@ -22,6 +24,19 @@ public class InputController : MonoBehaviour
             if (!clickStatus)
             {
                 StartGame(Input.mousePosition);
+            }
+        }
+        else
+        {
+            if (clickStatus)
+            {
+                // Start Bat Draw
+                _batCreator.BatCreationToggle(MousePosToWorldPos(Input.mousePosition), BatCreator.BatEndType.Start);
+            }
+            else
+            {
+                // End Bat Draw
+                _batCreator.BatCreationToggle(MousePosToWorldPos(Input.mousePosition), BatCreator.BatEndType.End);
             }
         }
     }
