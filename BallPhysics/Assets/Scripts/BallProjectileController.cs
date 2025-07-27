@@ -1,8 +1,5 @@
 using System;
-using Unity.Android.Gradle.Manifest;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BallProjectileController : MonoBehaviour
 {
