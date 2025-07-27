@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     private bool _gameStarted = false;
+    private bool _trailStarted = false;
 
     private BallProjectileController _ball;
 
@@ -17,21 +18,52 @@ public class InputController : MonoBehaviour
     {
         bool clickStatus = context.ReadValue<float>() == 1.0f;
 
-        // If mouse click before game start - start game
-        if (!_gameStarted && clickStatus)
+        if (!_gameStarted)
         {
-            StartGame(Input.mousePosition);
+            // If mouse click up before game start - start game
+            if (!clickStatus)
+            {
+                StartGame(Input.mousePosition);
+            }
+            else
+            {
+                _trailStarted = true;
+                _ball.ToggleProjectileTrail(true);
+                RotateTrail(Input.mousePosition);
+            }
         }
+       
+    }
+
+    public void CallbackMouseDrag(InputAction.CallbackContext context)
+    {
+        if (!_gameStarted && _trailStarted)
+        {
+            RotateTrail(Input.mousePosition);
+        }
+    }
+
+    private void RotateTrail(Vector3 mousePos)
+    {
+        Vector2 worldPos = MousePosToWorldPos(mousePos);
+        _ball.RotateTrail(worldPos);
     }
 
     private void StartGame(Vector3 mousePos)
     {
         _gameStarted = true;
+        
+        Vector2 worldMousePos =MousePosToWorldPos(mousePos);
+        
+        _ball.ThrowBall(worldMousePos);
+    }
 
+    private Vector2 MousePosToWorldPos(Vector3 mousePos)
+    {
         // Convert mouse position to world to get target position to throw ball
         mousePos.z = 0;
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(mousePos);
         
-        _ball.ThrowBall(new Vector2(worldMousePos.x, worldMousePos.y));
+        return new Vector2(worldMousePos.x, worldMousePos.y);
     }
 }
