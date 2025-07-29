@@ -15,13 +15,12 @@ public class BatCreator : MonoBehaviour
     
     public void BatCreationToggle(Vector2 endPointPos, BatEndType endType)
     {
-        if (_batEndPoints.Count > (int)BatEndType.End)
+        if (_batEndPoints.Count < 2)
         {
-            _batEndPoints.Clear();
+            _batEndPoints.Add(endPointPos);
         }
-        _batEndPoints.Add(endPointPos);
 
-        if (endType == BatEndType.End)
+        if (endType == BatEndType.End && _batEndPoints.Count == 2)
         {
             // Calculate x scale of bat
             float length = Vector2.Distance(_batEndPoints[(int)BatEndType.End], _batEndPoints[(int)BatEndType.Start]);
@@ -40,6 +39,8 @@ public class BatCreator : MonoBehaviour
             _bat.transform.localScale = new Vector3(length, _bat.transform.localScale.y,_bat.transform.localScale.z);
 
             _bat.AddComponent<BoxCollider2D>();
+
+            _batEndPoints.Clear();
         }
     }
 }
