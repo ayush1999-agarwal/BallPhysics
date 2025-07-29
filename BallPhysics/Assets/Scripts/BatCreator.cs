@@ -38,6 +38,8 @@ public class BatCreator : MonoBehaviour
             _bat.transform.position = new Vector3(xPos, yPos, 0.0f);
             _bat.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angleRot);
             _bat.transform.localScale = new Vector3(length, _bat.transform.localScale.y,_bat.transform.localScale.z);
+
+            _bat.AddComponent<BoxCollider2D>();
         }
     }
 }
