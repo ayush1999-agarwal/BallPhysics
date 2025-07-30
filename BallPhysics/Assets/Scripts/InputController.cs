@@ -4,6 +4,14 @@ using UnityEngine.InputSystem;
 public class InputController : MonoBehaviour
 {
     private bool _gameStarted = false;
+    public enum BatEnableType
+    {
+        Disabled = -1,
+        Started = 0,
+        Finalised = 1
+    }
+    
+    public BatEnableType batEnableType = BatEnableType.Disabled;
 
     private BallProjectileController _ball;
     private BatCreator _batCreator;
@@ -32,11 +40,13 @@ public class InputController : MonoBehaviour
             {
                 // Start Bat Draw
                 _batCreator.BatCreationToggle(MousePosToWorldPos(Input.mousePosition), BatCreator.BatEndType.Start);
+                batEnableType = BatEnableType.Started;
             }
             else
             {
                 // End Bat Draw
                 _batCreator.BatCreationToggle(MousePosToWorldPos(Input.mousePosition), BatCreator.BatEndType.End);
+                batEnableType = BatEnableType.Finalised;
             }
         }
     }
@@ -46,6 +56,11 @@ public class InputController : MonoBehaviour
         if (!_gameStarted)
         {
             RotateTrail(Input.mousePosition);
+        }
+
+        if (batEnableType != BatEnableType.Disabled)
+        {
+            _batCreator.RoatateBat(MousePosToWorldPos(Input.mousePosition));
         }
     }
 
