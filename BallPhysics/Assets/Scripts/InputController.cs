@@ -25,7 +25,7 @@ public class InputController : MonoBehaviour
     public void CallbackMouseClicked(InputAction.CallbackContext context)
     {
         bool clickStatus = context.ReadValue<float>() == 1.0f;
-
+        
         if (!_gameStarted)
         {
             // If mouse click up before game start - start game
@@ -34,7 +34,7 @@ public class InputController : MonoBehaviour
                 StartGame(Input.mousePosition);
             }
         }
-        else
+        else if (batEnableType != BatEnableType.Finalised)
         {
             if (clickStatus)
             {
@@ -62,6 +62,12 @@ public class InputController : MonoBehaviour
         {
             _batCreator.RoatateBat(MousePosToWorldPos(Input.mousePosition));
         }
+    }
+
+    public void CallBackMouseRightClick(InputAction.CallbackContext context)
+    {
+        batEnableType = BatEnableType.Disabled;
+        _batCreator.DisableBat();
     }
 
     private void RotateTrail(Vector3 mousePos)

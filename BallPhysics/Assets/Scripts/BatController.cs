@@ -12,11 +12,16 @@ public class BatController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        BoxCollider2D colliderRef = GetComponent<BoxCollider2D>();
-        Destroy(colliderRef);
-        this.gameObject.SetActive(false);
+       DisableBat();
 
         //TODO: Use Signal
         _inputController.batEnableType = InputController.BatEnableType.Disabled;
+    }
+
+    public void DisableBat()
+    {
+        BoxCollider2D colliderRef = GetComponent<BoxCollider2D>();
+        Destroy(colliderRef);
+        this.gameObject.SetActive(false);
     }
 }

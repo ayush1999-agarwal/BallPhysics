@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject _bat;
+    [SerializeField] private BatController _bat;
     private float batLength = 0.0f;
     public enum BatEndType
     {
@@ -15,7 +15,6 @@ public class BatCreator : MonoBehaviour
     
     public void BatCreationToggle(Vector2 endPointPos, BatEndType endType)
     {
-        _bat.SetActive(true);
         if (_batEndPoints.Count >= 2)
         {
             _batEndPoints.Clear();
@@ -25,14 +24,16 @@ public class BatCreator : MonoBehaviour
         if (endType == BatEndType.End && _batEndPoints.Count == 2)
         {
             SetBatTransform(_batEndPoints[(int)BatEndType.Start], _batEndPoints[(int)BatEndType.End]);
-            _bat.AddComponent<BoxCollider2D>();
-            
+            _bat.gameObject.AddComponent<BoxCollider2D>();
+
             batLength = Vector2.Distance(_batEndPoints[(int)BatEndType.End], _batEndPoints[(int)BatEndType.Start]);
         }
     }
 
     public void RoatateBat(Vector2 targetPos)
     {
+        _bat.gameObject.SetActive(true);
+        
         if (_batEndPoints.Count == 2)
         {
             float newLength = Vector2.Distance(targetPos, _batEndPoints[(int)BatEndType.Start]);
@@ -43,6 +44,11 @@ public class BatCreator : MonoBehaviour
         }
         
         SetBatTransform(_batEndPoints[(int)BatEndType.Start], targetPos);
+    }
+
+    public void DisableBat()
+    {
+        _bat.DisableBat();
     }
     
     private void SetBatTransform(Vector2 startPos, Vector2 endPos)
