@@ -24,7 +24,7 @@ public class BatCreator : MonoBehaviour
         if (endType == BatEndType.End && _batEndPoints.Count == 2)
         {
             SetBatTransform(_batEndPoints[(int)BatEndType.Start], _batEndPoints[(int)BatEndType.End]);
-            _bat.gameObject.AddComponent<BoxCollider2D>();
+            _bat.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(transform.localScale.x, transform.localScale.y);
             batLength = Vector2.Distance(_batEndPoints[(int)BatEndType.End], _batEndPoints[(int)BatEndType.Start]);
         }
     }
@@ -32,6 +32,7 @@ public class BatCreator : MonoBehaviour
     public void RoatateBat(Vector2 targetPos)
     {
         _bat.gameObject.SetActive(true);
+        _bat.gameObject.GetComponent<BoxCollider2D>().enabled = true;
         
         if (_batEndPoints.Count == 2)
         {

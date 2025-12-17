@@ -21,7 +21,7 @@ public class BatController : MonoBehaviour
     public void DisableBat()
     {
         BoxCollider2D colliderRef = GetComponent<BoxCollider2D>();
-        Destroy(colliderRef);
+        colliderRef.enabled = false;
         this.gameObject.SetActive(false);
     }
 
@@ -31,5 +31,8 @@ public class BatController : MonoBehaviour
         Rigidbody2D rigidbodyRef = GetComponent<Rigidbody2D>();
         rigidbodyRef.MovePosition(targetPos);
         rigidbodyRef.MoveRotation(targetAngle);
+        
+        BoxCollider2D colliderRef = GetComponent<BoxCollider2D>();
+        colliderRef.size = new Vector2(newScaleX, transform.localScale.y);
     }
 }
