@@ -25,7 +25,6 @@ public class BatCreator : MonoBehaviour
         {
             SetBatTransform(_batEndPoints[(int)BatEndType.Start], _batEndPoints[(int)BatEndType.End]);
             _bat.gameObject.AddComponent<BoxCollider2D>();
-
             batLength = Vector2.Distance(_batEndPoints[(int)BatEndType.End], _batEndPoints[(int)BatEndType.Start]);
         }
     }
@@ -64,8 +63,6 @@ public class BatCreator : MonoBehaviour
         float yPos = (endPos.y + startPos.y) / 2.0f;
             
         // Apply bat transform
-        _bat.transform.position = new Vector3(xPos, yPos, 0.0f);
-        _bat.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angleRot);
-        _bat.transform.localScale = new Vector3(length, _bat.transform.localScale.y,_bat.transform.localScale.z);
+        _bat.RotateBat(length, new Vector3(xPos, yPos, 0.0f), angleRot);
     }
 }
