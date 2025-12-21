@@ -12,10 +12,13 @@ public class BatController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       DisableBat();
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            DisableBat();
 
-        //TODO: Use Signal
-        _inputController.batEnableType = InputController.BatEnableType.Disabled;
+            //TODO: Use Signal
+            _inputController.batEnableType = InputController.BatEnableType.Disabled;
+        }
     }
 
     public void DisableBat()

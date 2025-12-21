@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 92479622}
   - component: {fileID: 92479623}
   - component: {fileID: 92479624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,9 +541,9 @@ GameObject:
   - component: {fileID: 390345660}
   - component: {fileID: 390345659}
   - component: {fileID: 390345663}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 917198079}
   - component: {fileID: 917198080}
   - component: {fileID: 917198081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1064,7 +1064,7 @@ GameObject:
   - component: {fileID: 1018935543}
   - component: {fileID: 1018935544}
   - component: {fileID: 1018935545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 1556402202}
   - component: {fileID: 1556402203}
   - component: {fileID: 1556402204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,7 +1405,7 @@ GameObject:
   - component: {fileID: 1566334121}
   - component: {fileID: 1566334122}
   - component: {fileID: 1566334123}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
